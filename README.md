@@ -21,7 +21,7 @@ _'user' refers to a logged-in user unless otherwise specified_
   - [ ] how many posele's they have successfully matched out of 5
   - [ ] users score persists and will display on log-in even if they leave or logout of the app
 
-**enginering requirements**
+**engineering requirements**
 
 - [ ] Five 'poseles' hosted through Firebase. Each posele consists of an image and a ML model that
       is trained to recognize the posture/pose of the image subject.
@@ -56,7 +56,7 @@ _When a user presses play to begin a posele:_
 - [ ] Screenshot/share your score
 - [ ] User can select new gameplay option: multi-user party mode (local)
 
-**enginering requirements**
+**engineering requirements**
 
 **gameplay**
 
@@ -86,7 +86,7 @@ _Users can now select a new game mode: local hot-phone multiplayer ("party mode"
 - [ ] Each user friends list
 - [ ] Friends private leader board
 
-**enginering requirements**
+**engineering requirements**
 
 - [ ] database model must have a way of indicating whether an account has admin permissions
 - [ ] players who are not admin can't access poseles other than the current daily posele
@@ -100,8 +100,9 @@ _Users can now select a new game mode: local hot-phone multiplayer ("party mode"
 **user experience**
 
 - [ ] Additional user stats and metrics available, e.g:
-  - [ ] displaying stats immediately after a posele, such as % of users who successfully completed
-        this posele
+  - [ ] % of users who successfully completed this posele
+  - [ ] current streak of correct poseles
+  - [ ] current daily streak
 - [ ] Display POSEle rank
 - [ ] Subscription to allow users to send us money
 - [ ] User can select to receive daily push notification reminders of daily posele at select time
@@ -131,7 +132,7 @@ _Users can now select a new game mode: local hot-phone multiplayer ("party mode"
 
 - [ ] altering difficulty changes the selection of poseles available and time limit
 
-**enginering requirements**
+**engineering requirements**
 
 - [ ] Admin panel - admin users can access backend and add/edit/delete users, poseles, and
       leaderboards via the app or a web portal
