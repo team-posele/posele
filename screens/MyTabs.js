@@ -3,13 +3,20 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-ionicons';
+import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+
+  function handlePlay() {
+    navigation.replace('Pose');
+  }
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity onPress={handlePlay} style={styles.button}>
         <Text style={styles.buttonText}>Play</Text>
       </TouchableOpacity>
     </View>
