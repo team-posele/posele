@@ -1,20 +1,29 @@
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View, Image, Button} from 'react-native';
+import {StyleSheet, Text, View, Image, Button, Alert} from 'react-native';
+import {TouchableOpacity} from 'react-native-web';
 
 export default function Pose() {
   return (
     <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text> */}
+      <View style={styles.instructionsView}>
+        <Text style={styles.instructionsText}>Playing Posele:</Text>
+        <Text style={styles.instructionsText}>When you click Pose Now, you will see an image</Text>
+        <Text style={styles.instructionsText}>Your device camera will start</Text>
+        <Text style={styles.instructionsText}>
+          You have five seconds to line up your shot and match the pose in the image.
+        </Text>
+      </View>
       <View style={styles.pose}>
-        <Image
-          style={styles.image}
-          source={{
-            uri:
-              'https://cconnect.s3.amazonaws.com/wp-content/uploads/2014/05/Storm-Toys-Michael-Jordan-Figures-.jpg',
-          }}
-        ></Image>
-        <Text style={styles.warning}>Warning Text</Text>
-        <Button onPress={() => {}} title="Learn More" />
+        <Image style={styles.image} source={require('../assets/cameraWarning.jpg')}></Image>
+        <Text style={styles.warning}>
+          Please move to a location where you have room to move around and permission to take
+          pictures. Be aware of other people, pets, and objects.
+        </Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Pose Now!</Text>
+        </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -28,17 +37,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pose: {},
+  instructionsView: {
+    flex: 1,
+    marginTop: 15,
+    alignContent: 'center',
+    alignItems: 'center',
+  },
+  instructionsText: {
+    color: 'darkgray',
+  },
+  pose: {flex: 3},
   warning: {
     color: 'red',
     textAlign: 'center',
-    margin: 20,
-    marginBottom: 60,
   },
   image: {
     resizeMode: 'contain',
-    width: 300,
-    height: 300,
-    paddingTop: 40,
+    width: 125,
+    height: 125,
   },
+  button: {
+    backgroundColor: '#414BB2',
+    width: '70%',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  buttonContainer: {flex: 2, width: '100%', alignItems: 'center'},
 });
