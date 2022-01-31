@@ -1,6 +1,13 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import {KeyboardAvoidingView, TextInput, TouchableOpacity} from 'react-native-web';
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
+
 import {auth} from '../firebase';
 import {useNavigation} from '@react-navigation/native';
 
@@ -45,7 +52,7 @@ const Login = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <KeyboardAvoidingView style={styles.main} behavior="padding">
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Log in to your posele account</Text>
       </View>
@@ -66,19 +73,21 @@ const Login = () => {
           onChangeText={text => setPassword(text)}
         />
       </View>
-      <TouchableOpacity style={styles.primaryButton}>
-        <Text style={styles.primaryButtonText} onPress={handleLogin}>
-          Login
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.secondaryButton}>
-        <Text style={styles.secondaryButtonText} onPress={handleSignup}>
-          Sign Up
-        </Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.secondaryButton}>
-        <Text style={styles.secondaryButtonText}>Play as Guest</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.primaryButton}>
+          <Text style={styles.primaryButtonText} onPress={handleLogin}>
+            Login
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.secondaryButton}>
+          <Text style={styles.secondaryButtonText} onPress={handleSignup}>
+            Sign Up
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.secondaryButton}>
+          <Text style={styles.secondaryButtonText}>Play as Guest</Text>
+        </TouchableOpacity>
+      </View>
     </KeyboardAvoidingView>
   );
 };
@@ -86,27 +95,24 @@ const Login = () => {
 export default Login;
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  headerContainer: {flex: 1, alignItems: 'center', justifyContent: 'flex-end'},
   headerText: {fontSize: 24, textAlign: 'center'},
+  buttonContainer: {
+    width: '100%',
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
   primaryButton: {
     backgroundColor: '#414BB2',
-    width: '60%',
+    width: '85%',
     padding: 10,
-    borderRadius: 10,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  secondaryButton: {
-    backgroundColor: 'white',
-    borderColor: '#414BB2',
-    borderWidth: 3,
-    width: '60%',
-    padding: 5,
     borderRadius: 10,
     alignItems: 'center',
     marginTop: 20,
@@ -116,17 +122,35 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
+  secondaryButton: {
+    backgroundColor: 'white',
+    borderColor: '#414BB2',
+    borderWidth: 3,
+    width: '85%',
+    padding: 5,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+  },
   secondaryButtonText: {
     color: '#414BB2',
     fontSize: 16,
     fontWeight: 'bold',
   },
+  inputContainer: {
+    flex: 2,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
-    backgroundColor: '#414BB233',
+    width: '85%',
+    backgroundColor: '#414BB222',
+    borderWidth: 1,
+    borderColor: '#414BB2',
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderRadius: 5,
     marginVertical: 10,
   },
-  inputcontainer: {flex: 5, width: '80%'},
 });
