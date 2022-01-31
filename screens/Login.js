@@ -12,7 +12,7 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        navigate.navigate('MyTabs');
+        navigate.replace('MyTabs');
       }
     });
 
@@ -66,18 +66,18 @@ const Login = () => {
           onChangeText={text => setPassword(text)}
         />
       </View>
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.buttonText} onPress={handleLogin}>
+      <TouchableOpacity style={styles.primaryButton}>
+        <Text style={styles.primaryButtonText} onPress={handleLogin}>
           Login
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.signupButton}>
-        <Text style={styles.signupButtonText} onPress={handleSignup}>
+      <TouchableOpacity style={styles.secondaryButton}>
+        <Text style={styles.secondaryButtonText} onPress={handleSignup}>
           Sign Up
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.signupButton}>
-        <Text style={styles.signupButtonText}>Play as Guest</Text>
+      <TouchableOpacity style={styles.secondaryButton}>
+        <Text style={styles.secondaryButtonText}>Play as Guest</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerText: {fontSize: 24, textAlign: 'center'},
-  loginButton: {
+  primaryButton: {
     backgroundColor: '#414BB2',
     width: '60%',
     padding: 10,
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  signupButton: {
+  secondaryButton: {
     backgroundColor: 'white',
     borderColor: '#414BB2',
     borderWidth: 3,
@@ -111,12 +111,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  buttonText: {
+  primaryButtonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
   },
-  signupButtonText: {
+  secondaryButtonText: {
     color: '#414BB2',
     fontSize: 16,
     fontWeight: 'bold',

@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {auth} from '../firebase';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,10 +15,27 @@ const HomeScreen = () => {
     navigation.replace('Pose');
   }
 
+  const handleLogout = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log(`logged out!`);
+        navigation.replace('Login');
+      })
+      .catch(error => {
+        console.log(`error in handleLogout: ${error}`);
+      });
+  };
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handlePlay} style={styles.button}>
-        <Text style={styles.buttonText}>Play</Text>
+      <TouchableOpacity onPress={handlePlay} style={styles.primaryButton}>
+        <Text style={styles.primaryButtonText}>Play</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.secondaryButton}>
+        <Text style={styles.secondaryButtonText} onPress={handleLogout}>
+          Logout
+        </Text>
       </TouchableOpacity>
     </View>
   );
@@ -76,15 +94,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button: {
+  primaryButton: {
     backgroundColor: '#414BB2',
     width: '60%',
-    padding: 15,
+    padding: 10,
     borderRadius: 10,
     alignItems: 'center',
+    marginTop: 20,
   },
-  buttonText: {
+  secondaryButton: {
+    backgroundColor: 'white',
+    borderColor: '#414BB2',
+    borderWidth: 3,
+    width: '60%',
+    padding: 5,
+    borderRadius: 10,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  primaryButtonText: {
     color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  secondaryButtonText: {
+    color: '#414BB2',
     fontSize: 16,
     fontWeight: 'bold',
   },
