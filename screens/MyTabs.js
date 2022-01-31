@@ -29,6 +29,7 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
+      <Text>Hello, {auth.currentUser.email}</Text>
       <TouchableOpacity onPress={handlePlay} style={styles.primaryButton}>
         <Text style={styles.primaryButtonText}>Play</Text>
       </TouchableOpacity>
