@@ -1,6 +1,6 @@
+import {Alert, Button, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View, Image, Button, Alert} from 'react-native';
-import {TouchableOpacity} from 'react-native-web';
 
 export default function Pose() {
   return (
