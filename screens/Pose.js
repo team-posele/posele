@@ -1,20 +1,35 @@
+import {Alert, Button, Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
 import {StatusBar} from 'expo-status-bar';
-import {StyleSheet, Text, View, Image, Button} from 'react-native';
 
 export default function Pose() {
   return (
     <View style={styles.container}>
-      {/* <Text>Open up App.js to start working on your app!</Text> */}
+      <View style={styles.instructionsView}>
+        <Text style={[styles.instructionsText, {textAlign: 'center'}]}>Playing Posele:</Text>
+        <Text style={styles.instructionsText}>
+          1. When you click Pose Now, you will see an image
+        </Text>
+        <Text style={styles.instructionsText}>2. Your device camera will start</Text>
+        <Text style={styles.instructionsText}>
+          3. You have five seconds to line up your shot and match the pose in the image.
+        </Text>
+        <Text style={styles.instructionsText}>Good luck! </Text>
+      </View>
       <View style={styles.pose}>
-        <Image
-          style={styles.image}
-          source={{
-            uri:
-              'https://cconnect.s3.amazonaws.com/wp-content/uploads/2014/05/Storm-Toys-Michael-Jordan-Figures-.jpg',
-          }}
-        ></Image>
-        <Text style={styles.warning}>Warning Text</Text>
-        <Button onPress={() => {}} title="Learn More" />
+        <Image style={styles.image} source={require('../assets/cameraWarning.jpg')}></Image>
+        <Text style={styles.warning}>
+          Please move to a location where you have room to move around and permission to take
+          pictures. Be aware of other people, pets, and objects.
+        </Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={[styles.button, styles.smallButton]}>
+          <Text style={[styles.buttonText, styles.smallButtonText]}>Back</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Pose Now!</Text>
+        </TouchableOpacity>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -28,17 +43,59 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  pose: {},
+  instructionsView: {
+    flex: 2,
+    marginTop: 30,
+    alignContent: 'center',
+    justifyContent: 'flex-end',
+    marginHorizontal: 10,
+  },
+  instructionsText: {
+    backgroundColor: '#414BB2',
+    color: 'white',
+    fontSize: 20,
+    padding: 10,
+  },
+  pose: {flex: 2, flexDirection: 'row', justifyContent: 'center', alignItems: 'center'},
   warning: {
     color: 'red',
     textAlign: 'center',
-    margin: 20,
-    marginBottom: 60,
+    width: '50%',
+    fontSize: 20,
+    margin: 5,
   },
   image: {
     resizeMode: 'contain',
-    width: 300,
-    height: 300,
-    paddingTop: 40,
+    width: '35%',
+    margin: 5,
   },
+  button: {
+    backgroundColor: '#414BB2',
+    width: '60%',
+    padding: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'flex-start',
+  },
+  smallButton: {
+    width: '25%',
+    backgroundColor: 'white',
+    borderColor: '#414BB2',
+    borderWidth: 1,
+  },
+  smallButtonText: {color: '#414BB2'},
 });
